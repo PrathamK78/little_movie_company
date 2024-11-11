@@ -11,6 +11,20 @@ const Card = ({data,trending,index,media_type}) => {
 
   return (
     <Link to={"/"+mediaType+"/"+data.id} className='w-full min-w-[230px] max-w-[230px] h-80 block overflow-hidden rounded relative hover:scale-105 transition-all'>
+
+        {
+          data?.poster_path ? (
+            <img
+                src={imageURL+data?.poster_path}
+                // className='w-full h-full object-cover'
+            />
+          )
+          : (
+            <div className='bg-slate-800 w-full h-full flex justify-center items-center'>
+              Rendering image
+            </div>
+          )
+        }
         <img
             src={imageURL+data?.poster_path}
         />

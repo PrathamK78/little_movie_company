@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../assets/logo-no-background(1).png'
-import {Link, NavLink, useNavigate } from 'react-router-dom'
+import {Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import userIcon from '../assets/profile.gif'
 import { FaSearchengin } from "react-icons/fa6";
 import { navigation } from '../constants/navigation';
@@ -8,9 +8,11 @@ import { navigation } from '../constants/navigation';
 
 
 const Header = () => {
-
-    const [searchInput,setSearchInput] = useState('');
+    const location = useLocation()
+    const removeSpace = location?.search?.slice(3)?.split("%20")?.join(" ")
+    const [searchInput,setSearchInput] = useState(removeSpace);
     const navigate = useNavigate()
+    
 
 
     useEffect(()=>{
